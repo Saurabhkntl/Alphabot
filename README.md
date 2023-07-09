@@ -1,1 +1,1 @@
-# Alphabot
+# EventBuzz
