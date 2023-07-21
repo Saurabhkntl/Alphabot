@@ -58,7 +58,16 @@ class say_events_month(Action):
         years=current_time.year
 
         index1 = str(years)+"-"+str(index)+"-01"
-        index2 = str(years)+"-"+str(index)+"-31"
+        days30Months=[4,6,9,11]
+        days31Months=[1,3,5,7,8,10,12]
+        if(int(years)%4==0 and index == 2):
+            index2 = str(years)+"-"+str(index)+"-29"
+        if(index in days30Months):
+            index2 = str(years)+"-"+str(index)+"-30"
+        if(index in days31Months):
+            index2 = str(years)+"-"+str(index)+"-31"
+        if(int(years)%4!=0 and index==2):
+            index2 = str(years)+"-"+str(index)+"-28"    
         month_date_open = datetime.strptime(index1, "%Y-%m-%d")
         month_date_end = datetime.strptime(index2, "%Y-%m-%d")
         found = coll.find_one({"EventDate":{"$gte":month_date_open,"$lte":month_date_end}}, {"_id":0})
