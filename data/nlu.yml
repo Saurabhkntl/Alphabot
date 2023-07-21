@@ -1,0 +1,113 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: know_upcoming_events
+  examples: |
+    - Can you tell me about the upcoming event?
+    - What is the next event in this college?
+    - When and what is the next event of the college?
+    - Tell me about the next even the college is hosting
+    - What is the upcoming event in the college?
+- intent: particular_month_event
+  examples: |
+    - Is there any important even in the month of [January]{"entity":"month_name", "value":"January"}
+    - Are there any significant events scheduled for [February]{"entity":"month_name", "value":"February"}?
+    - I'm curious if there are any important happenings in [March]{"entity":"month_name", "value":"March"}.
+    - Tell me if there are any notable occasions in [April]{"entity":"month_name", "value":"April"} coming up.
+    - Is anything special planned for [May]{"entity":"month_name", "value":"May"}?
+    - Please let me know about any important events in [June]{"entity":"month_name", "value":"June"} this year.
+    - What are the significant happenings in [July]{"entity":"month_name", "value":"July"}?
+    - I'm interested in knowing if there are any important events in [August]{"entity":"month_name", "value":"August"}.
+    - Could you inform me about any notable occasions in [September]{"entity":"month_name", "value":"September"}?
+    - I want to find out if there are any important events in [October]{"entity":"month_name", "value":"October"}.
+    - Are there any significant happenings in [November]{"entity":"month_name", "value":"November"} that I should know about?
+    - Please provide information on any important events in [December]{"entity":"month_name", "value":"December"}.
