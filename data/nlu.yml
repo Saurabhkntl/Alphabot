@@ -99,15 +99,40 @@ nlu:
     - What is the upcoming event in the college?
 - intent: particular_month_event
   examples: |
-    - Is there any important even in the month of [January]{"entity":"month_name", "value":"January"}
-    - Are there any significant events scheduled for [February]{"entity":"month_name", "value":"February"}?
-    - I'm curious if there are any important happenings in [March]{"entity":"month_name", "value":"March"}.
-    - Tell me if there are any notable occasions in [April]{"entity":"month_name", "value":"April"} coming up.
-    - Is anything special planned for [May]{"entity":"month_name", "value":"May"}?
-    - Please let me know about any important events in [June]{"entity":"month_name", "value":"June"} this year.
-    - What are the significant happenings in [July]{"entity":"month_name", "value":"July"}?
-    - I'm interested in knowing if there are any important events in [August]{"entity":"month_name", "value":"August"}.
-    - Could you inform me about any notable occasions in [September]{"entity":"month_name", "value":"September"}?
-    - I want to find out if there are any important events in [October]{"entity":"month_name", "value":"October"}.
-    - Are there any significant happenings in [November]{"entity":"month_name", "value":"November"} that I should know about?
-    - Please provide information on any important events in [December]{"entity":"month_name", "value":"December"}.
+    - What important events are in [January]{"entity":"month_name", "value":"January"}?                 
+    - Are there any important happenings in [March]{"entity":"month_name", "value":"March"}?          
+    - Any important events in [June]{"entity":"month_name", "value":"June"} this year?                
+    - Could you inform me about any notable occasions in [September]{"entity":"month_name", "value":"September"}? 
+    - Please provide information on any important events in [December]{"entity":"month_name", "value":"December"}. 
+
+- lookup: month_name
+  examples: |
+    - January   
+    - February  
+    - March     
+    - April     
+    - May       
+    - June      
+    - July      
+    - August    
+    - September 
+    - October   
+    - November  
+    - December  
+- intent: all_events_spcfdate
+  examples: |
+    - What events are left for this year?
+    - Can you tell me what events are left?
+    - what are the upcoming events in the college?
+    - What events are left for this year?
+    - Can you tell me what events are left?
+    - What are the upcoming events in the college?
+    - Are there any events scheduled for the rest of the year?
+    - Can you give me the list of the remaining events of this year?
+    - Are there any more events planned for the year?
+- intent: all_events
+  examples : |
+    - What are all the events that are hosted in this college?
+    - Can you give me a list of all the events that are hosted in this college?
+    - What events does this college host?
+    - Give me a list of all the events that occur in a year
