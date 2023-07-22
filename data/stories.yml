@@ -18,6 +18,7 @@ stories:
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy
+  - action: restart_convo
 
 - story: sad path 2
   steps:
@@ -28,12 +29,14 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+  - action: restart_convo
 
 - story: bot says upcoming events
   steps:
   - intent: know_upcoming_events
   - action: action_say_events
   - action: restart_convo
+
 - story: bot says an event in a specific month
   steps:
   - intent: particular_month_event
@@ -41,4 +44,14 @@ stories:
     - month_name: "January"
   - action: action_say_mevents
   - action: restart_convo
-  
+
+- story: bot says all upcoming events
+  steps:
+  - intent: all_events_spcfdate
+  - action: action_say_allevents
+  - action: restart_convo
+- story: bot lists all events
+  steps:
+  - intent: all_events
+  - action: action_say_alleventsall
+  - action: restart_convo
