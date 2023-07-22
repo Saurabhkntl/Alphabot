@@ -10,10 +10,14 @@ intents:
   - bot_challenge
   - know_upcoming_events
   - particular_month_event
+  - all_events_spcfdate
+  - all_events
 actions:
   - action_say_events
   - restart_convo
   - action_say_mevents
+  - action_say_allevents
+  - action_say_alleventsall
 entities:
   - month_name
 
