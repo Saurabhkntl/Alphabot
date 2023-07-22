@@ -5,7 +5,8 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import Restarted
 import pymongo
 from datetime import datetime
-
+import time
+import sys
 current_time = datetime.now()
 client = pymongo.MongoClient("mongodb://localhost:27017")
 db= client["Trial_event_database"]
@@ -37,6 +38,7 @@ class say_events_(Action):
         message = "The next event in the college is "+event_name+". It is a "+event_type+" event, from "+event_start+" to "+event_end+" on "+parsed_datetime+"("+days[day_of_week_number]+")"
         dispatcher.utter_message(text=message)
         return []
+    
 class say_events_month(Action):
 
     def name(self) -> Text:
@@ -56,7 +58,7 @@ class say_events_month(Action):
                 index=i+1
                 break
         years=current_time.year
-
+        
         index1 = str(years)+"-"+str(index)+"-01"
         days30Months=[4,6,9,11]
         days31Months=[1,3,5,7,8,10,12]
@@ -85,5 +87,62 @@ class say_events_month(Action):
             message = "Yes, there is an event in that month. The event is "+event_name+". It is a "+event_type+" event, from "+event_start+" to "+event_end+" on "+parsed_datetime+"("+days[day_of_week_number]+")"
         else:
             message = "No important events are going to be hosted in that month"
+
         dispatcher.utter_message(text=message)
         return []
+class SayAllEventsAfterADate(Action):
+    def name(self) -> Text:
+        return "action_say_allevents"
+    def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        found = coll.find({"EventDate":{"$gte":current_time}},{"_id":0})
+        c=1
+        if found is None:
+            dispatcher.utter_message("No more events are scheduled after today for this year")
+        else:    
+            dispatcher.utter_message(text="The list of remaining events are:")
+            for i in found:
+                event_name = i["EventName"]
+                event_date = i["EventDate"]
+                desired_foramt = "%Y-%m-%d"
+                parsed_date = event_date.strftime(desired_foramt)
+                datetime_object = datetime.strptime(parsed_date, "%Y-%m-%d")
+                day_number = datetime_object.weekday()
+                event_location = i["Location"]
+                event_desc = i["Description"]
+                days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+                message = str(c)+". "+event_name+" on "+parsed_date+"("+days[day_number]+")\n"+"Location: "+event_location+"\nDescription: "+event_desc
+                dispatcher.utter_message(text=message)
+                dispatcher.utter_message(text=" ")             
+                c=c+1
+            return[]
+class SayAllEvents(Action):
+    def name(self) -> Text:
+        return "action_say_alleventsall"
+    def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        timestr = "1900-01-01"
+        timeobj = datetime.strptime(timestr,"%Y-%m-%d")
+        found = coll.find({"EventDate":{"$gte":timeobj}},{"_id":0})
+        c=1
+        if found is None:
+            dispatcher.utter_message("No more events are scheduled after today for this year")
+        else:    
+            dispatcher.utter_message(text="The list of events are:")
+            for i in found:
+                event_name = i["EventName"]
+                event_date = i["EventDate"]
+                desired_foramt = "%Y-%m-%d"
+                parsed_date = event_date.strftime(desired_foramt)
+                datetime_object = datetime.strptime(parsed_date, "%Y-%m-%d")
+                day_number = datetime_object.weekday()
+                event_location = i["Location"]
+                event_desc = i["Description"]
+                days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+                message = str(c)+". "+event_name+" on "+parsed_date+"("+days[day_number]+")\n"+"Location: "+event_location+"\nDescription: "+event_desc
+                dispatcher.utter_message(text=message)
+                dispatcher.utter_message(text=" ")             
+                c=c+1
+            return[]
