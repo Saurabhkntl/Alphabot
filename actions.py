@@ -146,3 +146,18 @@ class SayAllEvents(Action):
                 dispatcher.utter_message(text=" ")             
                 c=c+1
             return[]
+class giveUserEventLink(Action):
+    def name(self) -> Text:
+        return "action_givegformlink"
+    def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        entities = tracker.latest_message.get('entities', [])
+        Eventname = next((entity for entity in entities if entity['entity'] == 'eventname'), None)
+        Eventnamevalue = str(Eventname['value'])
+        found = coll.find_one({"EventName": Eventnamevalue},{"_id":0})       
+        if found is not None:
+            link = found['GformLink']
+            dispatcher.utter_message(text="You chose to register for "+Eventnamevalue+"\nHere is the google form link "+link)
+        else:
+            dispatcher.utter_message(text="The Registration for "+Eventnamevalue+" has not begun yet")
