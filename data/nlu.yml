@@ -136,3 +136,30 @@ nlu:
     - Can you give me a list of all the events that are hosted in this college?
     - What events does this college host?
     - Give me a list of all the events that occur in a year
+- intent: register
+  examples: |
+    - Can you register me?
+    - Can you help me get registered?
+    - Can you share the list of upcoming events that I can register for?
+    - I'm looking for a list of events I can register for. Any recommendations?
+    - Could you provide me with the schedule of events and their registration links?
+    - Where can I find information about the events happening this year?
+    - Is there a website or page where I can see all the events available for registration?
+    - What are the events I can register for this year?
+    - Show me a list of upcoming events and their registration details.
+- intent: get_event_name
+  examples: |
+    - I want to register for [Welcome Party]{"entity":"eventname", "value":"Welcome Party"}
+    - Can you register me for [Welcome Party]{"entity": "eventname", "value":"Welcome Party"}?
+    - [Welcome Party]{"entity":"eventname", "value":"Welcome Party"}
+    - [Sports Day]{"entity":"eventname", "value":"Sports Day"}
+    - [Hackathon]{"entity":"eventname","value":"Hackathon"}
+    - Register me for [Hackathon]{"entity":"eventname"}
+  
+- lookup: eventname
+  examples: |
+    - Welcome Party
+    - Tech Symposium
+    - Cultural Fest
+    - Hackathon
+    - Sports Day
