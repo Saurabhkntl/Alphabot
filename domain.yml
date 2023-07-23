@@ -12,15 +12,18 @@ intents:
   - particular_month_event
   - all_events_spcfdate
   - all_events
+  - register
+  - get_event_name
 actions:
   - action_say_events
   - restart_convo
   - action_say_mevents
   - action_say_allevents
   - action_say_alleventsall
+  - action_givegformlink
 entities:
   - month_name
-
+  - eventname
 responses:
   utter_greet:
   - text: "Hey! How are you?"
@@ -40,6 +43,8 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+  utter_entereventname:
+  - text: "Choose a name of the Events from the list above"
 
 session_config:
   session_expiration_time: 60
