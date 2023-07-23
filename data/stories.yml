@@ -55,3 +55,12 @@ stories:
   - intent: all_events
   - action: action_say_alleventsall
   - action: restart_convo
+- story: bot helps user register
+  steps:
+  - intent: register
+  - action: action_say_allevents
+  - action: utter_entereventname
+  - action: action_listen
+  - intent: get_event_name
+  - action: action_givegformlink
+  - action: restart_convo
