@@ -95,7 +95,7 @@ nlu:
     - Can you tell me about the upcoming event?
     - What is the next event in this college?
     - When and what is the next event of the college?
-    - Tell me about the next even the college is hosting
+    - Tell me about the next even the college is hosting 
     - What is the upcoming event in the college?
 - intent: particular_month_event
   examples: |
@@ -163,3 +163,47 @@ nlu:
     - Cultural Fest
     - Hackathon
     - Sports Day
+- intent: basic_details_bbsee
+  examples: |
+    - Can you tell me the basic details of BumbleSee event?
+    - Can you tell me about the Bumblesee event?
+    - Describe the Bumblesee event
+    - What do you know about the Bumblesee event?
+    - BumbleSee event?
+- intent: user_asks_arena_desc
+  examples: |
+    - Can you describe the arena of the Bumblesee event for me?
+    - What would the arena of the Bumblesee event be like?
+    - Can you provide me with the arena descriptions?
+    - Can you show me a [map]{"entity":"boolMap","value":"True"} of the arena?
+    - Can you tell me what the arena will [look]{"entity":"boolMap","value":"True"} like?
+    - Can you give me a [map]{"entity":"boolMap","value":"True"} of the Arena?
+    - Show me a [map]{"entity":"boolMap", "value":"True"} of the arena
+- intent: specific_details_about_BBSEE
+  examples: |
+    - Tell me about the [rules]{"entity":"SpecificDetail_BBSE", "value":"AllRules"} of BumbleSee event
+    - Can you list me the [rules of the Bumblesee event]{"entity":"SpecificDetail_BBSE","value":"AllRules"}?
+    - What are the [rules of the Bumblesee event]{"entity":"SpecificDetail_BBSE","value":"AllRules"}?
+    - What [rules]{"entity":"SpecificDetail_BBSE","value":"AllRules"} should I follow for BumbleSee event?
+    - Can you tell me about Rule [5]{"entity":"SpecificDetail_BBSE","value":"5"} of BumbleSee Event?
+    - What is Rule [4] {"entity:""SpecificDetail_BBSE","value":"4"} of bumblesee event?
+    - Tell me about Rule [6]{"entity":"SpecificDetail_BBSE","value":"6"} of the BumbleSee event
+    - What was rule [3]{"entity":"SpecificDetail_BBSE","value":"3"} of the BumbleSee event?
+    - Can you tell me about the [Gameplay]{"entity":"SpecificDetail_BBSE","value":"Game_Play"} of BumbleSee event?
+    - What is the [Gameplay]{"entity":"SpecificDetail_BBSE","value":"Game_Play"} of the BumbleSee event?
+    - Can you tell me about the [Marking Scheme]{"entity":"SpecificDetail_BBSE","value":"Marking_Scheme"} of the BumbleSee Event?
+    - What is the [Marking Scheme]{"entity":"SpecificDetail_BBSE","value":"Marking_Scheme"} of the BumbleSee Event?
+    - Describe the [marking]{"entity":"SpecificDetail_BBSE","value":"Marking_Scheme"} of the BumbleSee Event
+    - Can you tell me about the [Penalties]{"entity":"SpecificDetail_BBSE","value":"Penalty"} in the BumbleSee event?
+    - What are the [Penalties]{"entity":"SpecificDetail_BBSE","value":"Penalty"} that can be applied in the Bumblesee event?
+- lookup: SpecificDetail_BBSE
+  examples: |
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - Marking
+    - Gameplay
+
