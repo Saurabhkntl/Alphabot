@@ -64,3 +64,20 @@ stories:
   - intent: get_event_name
   - action: action_givegformlink
   - action: restart_convo
+- story: bumblesee_full_descip
+  steps:
+  - intent: basic_details_bbsee
+  - action: say_bbsee_details
+  - action: restart_convo
+- story: bumblesee_desc_map
+  steps:
+  - intent: user_asks_arena_desc
+  - action: show_arena_map
+  - action: restart_convo
+- story: specific_detail
+  steps:
+  - intent: specific_details_about_BBSEE
+    entities:
+    - specific_details_about_BBSEE: "AllRules"
+  - action: decide_details
+  - action: restart_convo
