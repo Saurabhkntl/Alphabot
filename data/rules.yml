@@ -11,6 +11,7 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
 - rule: bot follows path
   steps:
   - intent: get_event_name
