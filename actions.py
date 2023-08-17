@@ -2,7 +2,7 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import Restarted
+from rasa_sdk.events import Restarted, SlotSet
 import pymongo
 from datetime import datetime
 import time
@@ -11,6 +11,7 @@ current_time = datetime.now()
 client = pymongo.MongoClient("mongodb://localhost:27017")
 db= client["Trial_event_database"]
 coll=db["Year_1"]
+coll2 = db["user_data"]
 class ConvoRestart(Action):
     def name(self) -> Text:
         return "restart_convo"
@@ -161,3 +162,91 @@ class giveUserEventLink(Action):
             dispatcher.utter_message(text="You chose to register for "+Eventnamevalue+"\nHere is the google form link "+link)
         else:
             dispatcher.utter_message(text="The Registration for "+Eventnamevalue+" has not begun yet")
+DataBase = client['BotRush2k23']
+BBSEColl = DataBase['Bumblesee(Line_followers)']
+class giveUserEventLink(Action):
+    def name(self) -> Text:
+        return "say_bbsee_details"
+    def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        query={"_id":"BumbeSee"}
+        projection = {"Event_details":1}
+        desc = BBSEColl.find_one({"_id":"SmartBot"})
+        descip = desc["Details"]
+        storage = BBSEColl.find(query,projection)
+        for i in storage:
+            event_details = i.get("Event_details", {})
+            date=event_details.get("date")
+            stime=event_details.get("start_time")
+            loc=event_details.get("location")
+        dispatcher.utter_message(text=descip+"\nIt is on "+date+" starts at "+stime+".\nLocation: "+loc)
+class DecideArenaMember(Action):
+    def name(self) -> Text:
+        return "show_arena_map"
+    def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        entities = tracker.latest_message.get('entities', [])
+        boolMapEntity= next((entity for entity in entities if entity['entity'] == 'boolMap'), None)
+        descQuery ={"_id":"Arena_Desc"}
+        descProjection = {"Line_following":1,"Wall_following":1}
+        store_desc_data = BBSEColl.find(descQuery,descProjection)
+        for i in store_desc_data:
+            LineFollow = i.get("Line_following",{})
+            WallFollow = i.get("Wall_following",{})
+            LineDesc = LineFollow.get("description")
+            WallDesc = WallFollow.get("description")
+        if boolMapEntity is not None:
+            boolMapValue = str(boolMapEntity['value'])
+            mapObject=BBSEColl.find_one({"_id":"Arena_Map"})
+            mapURL = mapObject['URL']
+            dispatcher.utter_message(text="Sure! Here is a map of the arena\n"+mapURL)
+        else:
+            dispatcher.utter_message(text="For Line following event, "+LineDesc+"\nFor the Wall following event, "+WallDesc)
+
+class DetailsBBSE(Action):
+    def name(self) -> Text:
+        return "decide_details"
+    def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        entities = tracker.latest_message.get('entities', [])
+        SpecDetails = next((entity for entity in entities if entity['entity'] == 'SpecificDetail_BBSE'), None)
+        DetailType = str(SpecDetails['value'])
+        if(DetailType == "AllRules"):
+            query={"_id":"Rules"}
+            ruledocument = BBSEColl.find_one(query)
+            rdlen = len(ruledocument)
+            for c in range(0,rdlen-1):
+                dispatcher.utter_message(("Rule "+str(c+1)+":"+(BBSEColl.find_one(query))['R'+str(c+1)]+"\n"))
+                c=c+1
+            return[]
+        elif (DetailType =="Game_Play"):
+            query = {"_id":"Game_Play"}
+            projection ={"_id":0,"instructions.start_to_D.action":0,"instructions.D_to_end.action":0}
+            GPdoc= BBSEColl.find_one(query,projection)
+            s_to_d_desc=GPdoc.get("instructions",{}).get("start_to_D",{}).get("description",{})
+            d_to_end_desc = GPdoc.get("instructions",{}).get("D_to_end",{}).get("description",{})
+            dispatcher.utter_message(text="Here are the Gameplay Guides provided by the coordinators:\n"+s_to_d_desc+"\n"+d_to_end_desc)
+            return[]
+        elif DetailType.isnumeric() == True:
+            if(int(DetailType) in range(1,len(BBSEColl.find_one({"_id":"Rules"})))):
+                query={"_id":"Rules"}
+                ruledoc=(BBSEColl.find_one(query))["R"+str(DetailType)]
+                dispatcher.utter_message("According to Rule "+DetailType+"\n"+str(ruledoc))
+                return[]
+            else:
+                dispatcher.utter_message("Sorry that rule doesn't exist it seems")
+
+        elif DetailType == "Penalty" or DetailType == "Marking_Scheme":
+            GPdoc = BBSEColl.find_one({"_id":"Marking_Scheme"})
+            if(DetailType == "Penalty"):
+                dispatcher.utter_message("The number of seconds your bot takes to complete the arena, will be deducted from your final scoring")
+
+            else:
+                A_to_B = str(GPdoc.get("checkpoints_points",{}).get("A_to_B",{}))
+                B_to_C = str(GPdoc.get("checkpoints_points",{}).get("A_to_B",{}))
+                C_to_D = str(GPdoc.get("checkpoints_points",{}).get("C_to_D",{}))
+                D_to_END = str(GPdoc.get("checkpoints_points",{}).get("D_to_END",{}))
+                dispatcher.utter_message(text="From A to B:"+A_to_B+"points. \nFrom B to C:"+B_to_C+"points. \nC to D:"+C_to_D+"points. \nD to Finish Line:"+D_to_END+"points.")
