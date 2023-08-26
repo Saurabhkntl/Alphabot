@@ -91,3 +91,8 @@ stories:
   steps:
   - intent: take_me_to_academic_intent
   - action: utter_take_me_to_academic_site
+
+- story: take me to home site
+  steps:
+  - intent: take_me_to_home_intent
+  - action: utter_take_me_to_home_site
