@@ -242,3 +242,23 @@ nlu:
     - What can you tell me about MNNIT?
     - Brief me about our college.
     - Provide some insights about MNNIT.
+
+# intent for take me to academic site
+- intent: take_me_to_academic_intent
+  examples: |
+    - Can you take me to academic site of MNNIT?
+    - Please navigate me to the academic website of MNNIT.
+    - Can you direct me to the academic site of MNNIT?
+    - Take me to the academic MNNIT website.
+    - Lead me to the MNNIT academic site.
+    - Guide me to the academic webpage of MNNIT.
+    - I want to visit the academic website of MNNIT, can you take me there?
+    - Show me the academic site of MNNIT.
+    - Redirect me to the MNNIT academic website.
+    - Could you open the academic MNNIT site for me?
+    - Help me access the academic webpage of MNNIT.
+    - I'd like to go to the academic MNNIT website, can you assist?
+    - Please provide a link to the academic site of MNNIT.
+    - I need to visit the MNNIT academic website, could you lead the way?
+    - Can you direct me to the academic webpage of MNNIT?
+    - I'm interested in the academic site of MNNIT, can you show me?
