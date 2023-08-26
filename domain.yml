@@ -19,6 +19,8 @@ intents:
   - specific_details_about_BBSEE
   - take_me_to_academic_intent
   - college_information
+  - take_me_to_home_intent
+  
 actions:
   - action_say_events
   - restart_convo
@@ -35,6 +37,9 @@ entities:
   - boolMap
   - SpecificDetail_BBSE
 responses:
+  utter_take_me_to_home_site:
+  - text: "http://mnnit.ac.in"
+  
   utter_take_me_to_academic_site:
   - text: "https://academics.mnnit.ac.in/new"
 
