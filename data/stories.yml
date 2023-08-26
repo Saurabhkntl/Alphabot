@@ -81,3 +81,8 @@ stories:
     - specific_details_about_BBSEE: "AllRules"
   - action: decide_details
   - action: restart_convo
+
+- story: mnnitinformation
+  steps:
+  - intent: college_information
+  - action: utter_college_information
