@@ -86,3 +86,8 @@ stories:
   steps:
   - intent: college_information
   - action: utter_college_information
+
+- story: take me to academic site
+  steps:
+  - intent: take_me_to_academic_intent
+  - action: utter_take_me_to_academic_site
