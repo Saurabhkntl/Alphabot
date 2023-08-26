@@ -12,6 +12,21 @@ client = pymongo.MongoClient("mongodb://localhost:27017")
 db= client["Trial_event_database"]
 coll=db["Year_1"]
 coll2 = db["user_data"]
+
+class ActionService(Action):
+    def name(self) -> Text:
+        return "action_service"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: DomainDict) -> List[Dict[Text, Any]]:
+
+        buttons = [
+            {"payload":'/info{"content_type":"blogs"}',"title":"MNNIT Information"},
+            {"payload":'/event{"content_type":"event"}',"title":"Event"}
+        ]
+
+        dispatcher.utter_message(text="What do you want to know?",buttons=buttons)
+        return []
+
 class ConvoRestart(Action):
     def name(self) -> Text:
         return "restart_convo"
