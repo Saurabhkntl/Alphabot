@@ -31,6 +31,8 @@ actions:
   - say_bbsee_details
   - show_arena_map
   - decide_details
+  - action_service
+  
 entities:
   - month_name
   - eventname
