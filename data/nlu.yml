@@ -262,3 +262,21 @@ nlu:
     - I need to visit the MNNIT academic website, could you lead the way?
     - Can you direct me to the academic webpage of MNNIT?
     - I'm interested in the academic site of MNNIT, can you show me?
+- intent: take_me_to_home_intent
+  examples: |
+    - Can you take me to the official site MNNIT
+    - Please navigate me to the official website of MNNIT.
+    - Can you direct me to the official site of MNNIT?
+    - Take me to the official MNNIT website.
+    - Lead me to the MNNIT official site.
+    - Guide me to the official webpage of MNNIT.
+    - I want to visit the official website of MNNIT, can you take me there?
+    - Show me the official site of MNNIT.
+    - Redirect me to the MNNIT official website.
+    - Could you open the official MNNIT site for me?
+    - Help me access the official webpage of MNNIT.
+    - I'd like to go to the official MNNIT website, can you assist?
+    - Please provide a link to the official site of MNNIT.
+    - I need to visit the MNNIT official website, could you lead the way?
+    - Can you direct me to the official webpage of MNNIT?
+    - I'm interested in the official site of MNNIT, can you show me?
