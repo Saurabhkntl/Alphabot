@@ -2,33 +2,32 @@ version: "2.0"
 
 stories:
 
-- story: happy path
+# story for button particularly
+- story: buttons tutorial
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - action: action_service
 
-- story: sad path 1
+# story for documentation
+- story: information tutorial
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - intent: info
+    entities:
+      - content_type: "Blogs"
+  - slot_was_set:
+      - content_type: "Blogs"
+  - action: utter_college_information
   - action: restart_convo
 
-- story: sad path 2
+- story: event
   steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - intent: event
+    entities:
+      - content_type: "Event"
+  - slot_was_set:
+      - content_type: "Event"
+  - action: action_say_events
   - action: restart_convo
 
 - story: bot says upcoming events
@@ -80,4 +79,22 @@ stories:
     entities:
     - specific_details_about_BBSEE: "AllRules"
   - action: decide_details
+  - action: restart_convo
+
+- story: mnnitinformation
+  steps:
+  - intent: college_information
+  - action: utter_college_information
+  - action: restart_convo
+
+- story: take me to academic site
+  steps:
+  - intent: take_me_to_academic_intent
+  - action: utter_take_me_to_academic_site
+  - action: restart_convo
+
+- story: take me to home site
+  steps:
+  - intent: take_me_to_home_intent
+  - action: utter_take_me_to_home_site
   - action: restart_convo

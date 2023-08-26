@@ -17,6 +17,10 @@ intents:
   - basic_details_bbsee
   - user_asks_arena_desc
   - specific_details_about_BBSEE
+  - take_me_to_academic_intent
+  - college_information
+  - take_me_to_home_intent
+  
 actions:
   - action_say_events
   - restart_convo
@@ -27,12 +31,23 @@ actions:
   - say_bbsee_details
   - show_arena_map
   - decide_details
+  - action_service
+  
 entities:
   - month_name
   - eventname
   - boolMap
   - SpecificDetail_BBSE
 responses:
+  utter_take_me_to_home_site:
+  - text: "http://mnnit.ac.in"
+  
+  utter_take_me_to_academic_site:
+  - text: "https://academics.mnnit.ac.in/new"
+
+  utter_college_information:
+  - text: "https://dhruvrastogi-123.github.io/MNNITINFO/"
+  
   utter_greet:
   - text: "Hey! How are you today? Let me know if you need some help!"
 

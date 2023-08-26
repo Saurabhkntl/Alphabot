@@ -207,3 +207,76 @@ nlu:
     - Marking
     - Gameplay
 
+- intent: college_information
+  examples: |
+    - Give me some information about our college.
+    - Give me some information about MNNIT.
+    - Give me details about our college.
+    - Can you tell me more about our college?
+    - I'd like to know about our college.
+    - What can you tell me about our college?
+    - Share some information about our college.
+    - Could you provide some insights about our college?
+    - Tell me about our college.
+    - Inform me about our college.
+    - What's there to know about our college?
+    - Provide an overview of our college.
+    - I'm curious about our college, tell me more.
+    - What's special about our college?
+    - Explain our college to me.
+    - Let's talk about our college.
+    - I'm interested in learning about our college.
+    - Give me a rundown of our college.
+    - Informative details about our college, please.
+    - What's the story behind our college?
+    - I want to know more about our college.
+    - What's the background of our college?
+    - Can you provide insights into our college?
+    - Let's delve into our college's information.
+    - Share some facts about our college.
+    - What's the history of our college?
+    - I'm keen to learn about our college.
+    - What sets our college apart?
+    - Give me a glimpse of our college.
+    - I'm looking for details about our college.
+    - What can you tell me about MNNIT?
+    - Brief me about our college.
+    - Provide some insights about MNNIT.
+
+# intent for take me to academic site
+- intent: take_me_to_academic_intent
+  examples: |
+    - Can you take me to academic site of MNNIT?
+    - Please navigate me to the academic website of MNNIT.
+    - Can you direct me to the academic site of MNNIT?
+    - Take me to the academic MNNIT website.
+    - Lead me to the MNNIT academic site.
+    - Guide me to the academic webpage of MNNIT.
+    - I want to visit the academic website of MNNIT, can you take me there?
+    - Show me the academic site of MNNIT.
+    - Redirect me to the MNNIT academic website.
+    - Could you open the academic MNNIT site for me?
+    - Help me access the academic webpage of MNNIT.
+    - I'd like to go to the academic MNNIT website, can you assist?
+    - Please provide a link to the academic site of MNNIT.
+    - I need to visit the MNNIT academic website, could you lead the way?
+    - Can you direct me to the academic webpage of MNNIT?
+    - I'm interested in the academic site of MNNIT, can you show me?
+- intent: take_me_to_home_intent
+  examples: |
+    - Can you take me to the official site MNNIT
+    - Please navigate me to the official website of MNNIT.
+    - Can you direct me to the official site of MNNIT?
+    - Take me to the official MNNIT website.
+    - Lead me to the MNNIT official site.
+    - Guide me to the official webpage of MNNIT.
+    - I want to visit the official website of MNNIT, can you take me there?
+    - Show me the official site of MNNIT.
+    - Redirect me to the MNNIT official website.
+    - Could you open the official MNNIT site for me?
+    - Help me access the official webpage of MNNIT.
+    - I'd like to go to the official MNNIT website, can you assist?
+    - Please provide a link to the official site of MNNIT.
+    - I need to visit the MNNIT official website, could you lead the way?
+    - Can you direct me to the official webpage of MNNIT?
+    - I'm interested in the official site of MNNIT, can you show me?
